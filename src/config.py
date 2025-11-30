@@ -20,10 +20,8 @@ SCRAPING_CONFIG = {
     "country": "et"
 }
 DATA_PATHES = {
-    "raw": "data/raw",
-    "processed": "data/processed",
-    "raw_reviews": "data/raw/raw_reviews.csv",
-    "processed_raws": "data/processed/reviews_processed.csv",
-    "sentiment_results": "data/processed/sentiment_results.csv",
-    "final_results": "data/processed/final_results.csv"
+    "raw": "../data/raw",
+    "processed": "../data/processed",
+    "sentiment_results": "../data/sentiment_results",
+    "final": "../data/final"
 }
