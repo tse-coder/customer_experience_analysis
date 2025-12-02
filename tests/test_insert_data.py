@@ -1,8 +1,11 @@
 import unittest
-import sys
-sys.path.append("../src")
-from database import get_connection
-from scripts.insert_data import insert_review
+import sys, os
+
+# Make sure importing src works when running tests via discovery
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from database import Database
+from scripts.insert_data import insert_reviews
+from config import DB_CONFIG
 
 
 class TestInsertData(unittest.TestCase):
@@ -14,35 +17,46 @@ class TestInsertData(unittest.TestCase):
         """
         Insert one review into the database and check if it is stored correctly.
         """
-        conn = get_connection()
 
-        # Sample review dictionary
+        # Create a temporary CSV containing 1 sample review
+        import pandas as pd
+        temp_csv = "temp_test_review.csv"
+
         sample = {
-            "review": "Unit test review",
-            "rating": 5,
-            "date": "2024-01-01",
-            "bank_name": "CBE",
-            "app_name": "CBE Mobile App"
+            "reviewId": ["test123"],
+            "review": ["Unit test review"],
+            "rating": [5],
+            "date": ["2024-01-01"],
+            "bank_name": ["CBE"],
+            "app_name": ["CBE Mobile App"],
+            "month": [1],
+            "year": [2024]
         }
 
-        # Insert review
-        result = insert_review(conn, sample)
-        self.assertTrue(result, "insert_review() did not return True.")
+        pd.DataFrame(sample).to_csv(temp_csv, index=False)
 
-        # Verify record exists
-        cur = conn.cursor()
+        # Call original function
+        insert_reviews(temp_csv, DB_CONFIG)
+
+        # Verify
+        db = Database(**DB_CONFIG)
+        db.connect()
+        cur = db.cursor()
+
         cur.execute("""
-            SELECT review, rating
+            SELECT review_text, rating
             FROM reviews
-            WHERE review = %s;
-        """, (sample["review"],))
+            WHERE review_text = %s;
+        """, ("Unit test review",))
 
         row = cur.fetchone()
-        self.assertIsNotNone(row, "Inserted review not found in database.")
-        self.assertEqual(row[0], sample["review"], "Inserted review text does not match.")
-        self.assertEqual(row[1], sample["rating"], "Inserted rating does not match.")
+        self.assertIsNotNone(row)
+        self.assertEqual(row[0], "Unit test review")
+        self.assertEqual(row[1], 5)
 
-        conn.close()
+        db.close()
+
+        os.remove(temp_csv)
 
 
 if __name__ == "__main__":

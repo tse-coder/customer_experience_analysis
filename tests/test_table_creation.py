@@ -1,8 +1,11 @@
 import unittest
-import sys
-sys.path.append("../src")
+import sys, os
+
+# Make sure importing src works when running tests via discovery
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 from scripts.create_tables import create_tables
-from database import get_connection
+from database import Database
+from config import DB_CONFIG
 
 
 class TestCreateTables(unittest.TestCase):
@@ -14,10 +17,10 @@ class TestCreateTables(unittest.TestCase):
         """
         Ensure the create_tables() function successfully creates the 'reviews' table.
         """
-        conn = get_connection()
+        conn = Database(**DB_CONFIG).connect()
 
         # Call the function
-        result = create_tables(conn)
+        result = create_tables()
         self.assertTrue(result, "create_tables() did not return True.")
 
         # Check if table exists in PostgreSQL

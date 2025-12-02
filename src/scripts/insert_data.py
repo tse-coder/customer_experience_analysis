@@ -4,18 +4,12 @@ from database import Database
 from psycopg2.extras import execute_batch
 from fileLoader import FileLoader
 
-def insert_reviews(csv_path):
-    db = Database(
-        host="localhost",
-        dbname="bank_reviews",
-        user="postgres",
-        password="your_password"
-    )
+def insert_reviews(csv_path, config):
+    db = Database(**config)
     db.connect()
     cur = db.cursor()
-
+    print(f"Inserting {csv_path} into database...")
     df = FileLoader(csv_path).load()
-
     sql = """
     INSERT INTO reviews (review_id, review_text, rating, app_name, bank_name, date, month, year)
     VALUES (%s,%s,%s,%s,%s,%s,%s,%s);

@@ -1,17 +1,14 @@
 import sys
-sys.path.append("..")
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..', 'src')))
 from database import Database
+from config import DB_CONFIG
 
 def create_tables():
     """
     Create the 'reviews' and 'sentiment_results' tables in the database.
     """
-    db = Database(
-        host="localhost",
-        dbname="bank_reviews",
-        user="postgres",
-        password="your_password"
-    )
+    db = Database(**DB_CONFIG)
     db.connect()
     cur = db.cursor()
 
@@ -46,6 +43,7 @@ def create_tables():
     db.commit()
     db.close()
     print("Tables created successfully")
+    return True
 
 if __name__ == "__main__":
     create_tables()
