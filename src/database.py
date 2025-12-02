@@ -44,3 +44,16 @@ class Database:
         if self.conn:
             self.conn.close()
             print("Connection closed")
+    def verify(self,app,file_type):
+        cur = self.cursor()
+        # Check if the table exists and return the number of rows in the table
+        cur.execute(f"SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = '{file_type}_{app}');")
+        exists = cur.fetchone()[0]
+        cur.execute(f"SELECT COUNT(*) FROM {file_type}_{app};")
+        table_count = cur.fetchone()[0]
+        if exists:
+            print(f"Table {file_type}_{app} exists")
+            print(f"Number of rows in {file_type}_{app}: {table_count}")
+        else:
+            print(f"Table {file_type}_{app} does not exist")
+        return exists
