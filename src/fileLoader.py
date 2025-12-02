@@ -1,7 +1,7 @@
 # create a file loader object
 import pandas as pd
 class FileLoader:
-    def __init__(self, file_path, df):
+    def __init__(self, file_path, df=None):
         self.file_path = file_path
         self.df = df
 
