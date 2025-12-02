@@ -25,3 +25,9 @@ DATA_PATHES = {
     "sentiment_results": "../data/sentiment_results",
     "final": "../data/final"
 }
+DB_CONFIG = {
+    "host": "localhost",
+    "dbname": "bank_reviews",
+    "user": "tsegaye",
+    "password": "tsegish123"
+}

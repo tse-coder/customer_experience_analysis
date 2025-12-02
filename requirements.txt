@@ -8,3 +8,4 @@ nltk
 scikit-learn
 gensim
 spacy
+psycopg2-binary
