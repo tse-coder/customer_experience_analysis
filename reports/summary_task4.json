@@ -1,0 +1,183 @@
+{
+  "per_bank": {
+    "CBE": {
+      "top_positive": [
+        "app",
+        "good",
+        "very",
+        "best",
+        "nice",
+        "cbe",
+        "bank",
+        "application",
+        "use",
+        "like"
+      ],
+      "top_negative": [
+        "app",
+        "why",
+        "bank",
+        "work",
+        "can't",
+        "branch",
+        "other",
+        "what",
+        "working",
+        "doesn't"
+      ],
+      "keywords_img": "/home/tsegaye/Desktop/projects/tenx/week2/reports/figures/top_keywords_cbe.png"
+    },
+    "BOA": {
+      "top_positive": [
+        "good",
+        "app",
+        "best",
+        "boa",
+        "very",
+        "nice",
+        "bank",
+        "please",
+        "great",
+        "like"
+      ],
+      "top_negative": [
+        "app",
+        "bank",
+        "work",
+        "worst",
+        "please",
+        "time",
+        "very",
+        "doesn't",
+        "mobile",
+        "even"
+      ],
+      "keywords_img": "/home/tsegaye/Desktop/projects/tenx/week2/reports/figures/top_keywords_boa.png"
+    },
+    "DB": {
+      "top_positive": [
+        "app",
+        "good",
+        "best",
+        "dashen",
+        "bank",
+        "banking",
+        "one",
+        "super",
+        "nice",
+        "very"
+      ],
+      "top_negative": [
+        "app",
+        "bank",
+        "it's",
+        "worst",
+        "very",
+        "ever",
+        "banking",
+        "slow",
+        "even",
+        "working"
+      ],
+      "keywords_img": "/home/tsegaye/Desktop/projects/tenx/week2/reports/figures/top_keywords_db.png"
+    }
+  },
+  "numeric_summary": {
+    "CBE": {
+      "drivers": [
+        "app",
+        "good",
+        "very",
+        "best",
+        "nice",
+        "cbe",
+        "bank",
+        "application",
+        "use",
+        "like"
+      ],
+      "pain_points": [
+        "app",
+        "why",
+        "bank",
+        "work",
+        "can't",
+        "branch",
+        "other",
+        "what",
+        "working",
+        "doesn't"
+      ],
+      "avg_rating": 4.1175,
+      "n_reviews": 400
+    },
+    "BOA": {
+      "drivers": [
+        "good",
+        "app",
+        "best",
+        "boa",
+        "very",
+        "nice",
+        "bank",
+        "please",
+        "great",
+        "like"
+      ],
+      "pain_points": [
+        "app",
+        "bank",
+        "work",
+        "worst",
+        "please",
+        "time",
+        "very",
+        "doesn't",
+        "mobile",
+        "even"
+      ],
+      "avg_rating": 3.38,
+      "n_reviews": 400
+    },
+    "DB": {
+      "drivers": [
+        "app",
+        "good",
+        "best",
+        "dashen",
+        "bank",
+        "banking",
+        "one",
+        "super",
+        "nice",
+        "very"
+      ],
+      "pain_points": [
+        "app",
+        "bank",
+        "it's",
+        "worst",
+        "very",
+        "ever",
+        "banking",
+        "slow",
+        "even",
+        "working"
+      ],
+      "avg_rating": 3.96,
+      "n_reviews": 400
+    }
+  },
+  "comparison": {
+    "avg_ratings": {
+      "CBE": 4.1175,
+      "BOA": 3.38,
+      "DB": 3.96
+    },
+    "counts": {
+      "CBE": 400,
+      "BOA": 400,
+      "DB": 400
+    }
+  }
+}

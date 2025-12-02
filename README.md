@@ -1,4 +1,4 @@
-# **Week 2 — Task 1 , Task 2 and Task 3 Mobile Banking Review Analysis**
+# **Week 2 — Final Mobile Banking Review Analysis**
 
 ## **Project Overview**
 
@@ -16,26 +16,37 @@ During **Task 2 (partial)**, sentiment analysis, keyword extraction, and topic m
 ```
 WEEK2/
 │
-├─ .github/workflows/
-│   └─ ci.yml                 # CI pipeline for formatting, tests, and linting
+├─ .github/workflows/         # CI pipeline for formatting, tests and linting
+│  └─ ci.yml
 │
 ├─ data/
-│   ├─ raw/                   # Raw scraped reviews
-│   ├─ processed/             # Cleaned CSV files per bank
-│   ├─ sentiment_results/     # Sentiment outputs (TextBlob & VADER)
-│   └─ final/                 # Combined outputs after keyword + LDA + nouns
+│  ├─ raw/                    # Raw scraped reviews per bank
+│  ├─ processed/              # Cleaned CSV files per bank (CBE.csv, BOA.csv, DB.csv)
+│  ├─ sentiment_results/      # Sentiment outputs (TextBlob & VADER)
+│  └─ final/                  # Combined outputs after keyword + LDA + nouns
 │
-├─ notebooks/
-│   ├─ scraper.ipynb          # Task 1 workflow
-│   └─ sentiment.ipynb   # Task 2 progress up to Cell 6
+├─ notebooks/                 # analysis notebooks
+│  ├─ scraper.ipynb           # Task 1: scraping & preprocessing demo
+│  ├─ sentiment.ipynb         # Task 2: sentiment + keyword exploration
+│  └─ database.ipynb          # DB exploration / quick queries (optional)
 │
-├─ src/
-│   ├─ config.py              # Constants and settings
-│   ├─ fileLoader.py          # File I/O utility
-│   ├─ processor.py           # Cleaning & preprocessing pipeline
-│   └─ scraper.py             # Google Play scraper
+├─ reports/                   # Task 3/Task 4 artifacts and writeups
+│  ├─ report.md               # Task 4 detailed write-up and recommendations
+│  └─ figures/                # generated figures (PNG) used in reporting
 │
-├─ tests/                     # Test suite (if implemented)
+├─ src/                       # source code and utilities
+│  ├─ config.py               # constants / env handling
+│  ├─ fileLoader.py           # CSV load/save helper
+│  ├─ processor.py            # cleaning & preprocessing pipeline
+│  ├─ scraper.py              # google-play-scraper wrapper
+│  ├─ task4_insights.py       # new Task 4 analysis script (visuals + summary)
+│  ├─ database.py             # DB helpers
+│  ├─ dump.sql                # SQL schema / examples
+│  └─ scripts/                # DB helpers / bulk insert scripts
+│     ├─ create_tables.py
+│     └─ insert_data.py
+│
+├─ tests/                     # unit tests
 ├─ requirements.txt
 └─ .gitignore
 ```
@@ -148,7 +159,9 @@ data/final/
 ```
 
 ### **✔Visualizations (sentiment distribution, keyword plots)**
+
 ### **✔Bank-level comparison charts**
+
 ### **✔Summary export and reporting**
 
 # Task 3 — Database (COMPLETED)
@@ -199,3 +212,30 @@ PYTHONPATH=src python -c "from scripts.insert_data import insert_sentiment; inse
 ## Tests & verification
 
 - Unit tests for the preprocessing pipeline are in `tests/` (run with pytest or unittest). Database integration tests (if run locally) can confirm tables exist and data inserted.
+
+---
+
+# Task 4 — Insights & Recommendations (IN PROGRESS)
+
+This repository includes a Task 4 analysis script and artifacts which summarize business insights and recommendations per bank.
+
+### Artifacts
+
+- `reports/report.md` — detailed Task 4 write-up with findings, recommendations, ethics and next steps (not the final stakeholder report).
+- `reports/figures/` — created visuals: rating_distribution.png, sentiment_counts.png, top_keywords_cbe.png, top_keywords_boa.png, top_keywords_db.png
+- `reports/summary_task4.json` — compact machine-readable summary produced by `src/task4_insights.py`.
+
+### How to run Task 4 analysis
+
+1. Ensure processed CSVs and sentiment result CSVs exist in `data/processed/` and `data/sentiment_results/` respectively.
+2. Run the insights script to regenerate visuals:
+
+```bash
+PYTHONPATH=src venv/bin/python src/task4_insights.py
+```
+
+This writes visual outputs to `reports/figures` and a summary JSON to `reports/`.
+
+---
+
+If you want I can now produce an executive-ready final report PDF using the generated visuals, or continue improving the theme extraction with more advanced NLP (LDA / BERTopic) — which would improve theme quality and grouping.
