@@ -1,4 +1,4 @@
-# **Week 2 — Task 1 & Partial Task 2: Mobile Banking Review Analysis**
+# **Week 2 — Task 1 , Task 2 and Task 3 Mobile Banking Review Analysis**
 
 ## **Project Overview**
 
@@ -147,13 +147,9 @@ All intermediate results saved under:
 data/final/
 ```
 
-# **Next Steps for Task 2**
-
-Remaining items:
-
-- Visualizations (sentiment distribution, keyword plots)
-- Bank-level comparison charts
-- Summary export and reporting
+### **✔Visualizations (sentiment distribution, keyword plots)**
+### **✔Bank-level comparison charts**
+### **✔Summary export and reporting**
 
 # Task 3 — Database (COMPLETED)
 
